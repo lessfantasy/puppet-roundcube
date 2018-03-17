@@ -1,0 +1,23 @@
+<%- | String $dbpass   = 'CHANGEME',
+      String $dbtype   = 'mysql',
+      String $dbname   = 'roundcube',
+      String $dbuser   = 'roundcube',
+      String $host     = 'localhost',
+      String $dbport   = '3306',
+      String $basepath = '',
+| -%>
+<?php
+##
+## database access settings in php format
+## 
+## Managed by puppet (module roundcube)
+##
+$dbuser='<%= $dbuser %>';
+$dbpass='<%= $dbpass %>';
+$basepath='<%= $basepath %>';
+$dbname='<%= $dbname %>';
+$dbserver='<%= $host %>';
+$dbport='<%= $dbport %>';
+$dbtype='<%= $dbtype %>';
+
+

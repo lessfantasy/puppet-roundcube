@@ -1,0 +1,34 @@
+<%- | Hash   $configs           = {},
+      Array  $plugins           = [],
+      String $include_db_config = '',
+| -%>
+<?php
+# Managed by puppet (module roundcube)
+
+<% if $include_db_config != '' { -%>
+include_once("<%= $include_db_config %>");
+<% } -%>
+
+<% $configs.each | $index, $value | { -%>
+<% if ( $value =~ String ) { -%>
+$config['<%= $index %>'] = '<%= $value -%>';
+<% } -%>
+<% if ( $value =~ Integer ) { -%>
+$config['<%= $index %>'] = <%= $value -%>;
+<% } -%>
+<% if ( $value =~ Array ) { -%>
+$config['<%= $index %>'] = array('<%= $value.join("','") -%>');
+<% } -%>
+<% if ( $value =~ Hash ) { -%>
+$config['<%= $index %>'] = array(
+<% $value.each | $k, $v | { -%>
+   '<%= $k -%>' => '<%= $v -%>',
+<% } -%>
+);
+<% } -%>
+<% if ( $value =~ Boolean ) { -%>
+$config['<%= $index %>'] = <%= $value -%>;
+<% } -%>
+<% } -%>
+
+$config['plugins'] = array('<%= $plugins.join("','") -%>');
