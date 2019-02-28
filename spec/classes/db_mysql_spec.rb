@@ -2,6 +2,7 @@ require 'spec_helper'
 
 
 describe 'roundcube::db::mysql' do
+  let(:pre_condition) { ['include mysql::params'] }
   let :facts do
     {
       :operatingsystemrelease => 'test',

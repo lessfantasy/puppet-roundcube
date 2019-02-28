@@ -2,7 +2,7 @@
 require 'spec_helper'
 
 describe 'roundcube' do
-
+  let(:pre_condition) { ['include mysql::params'] }
   let :facts do
     {
       :operatingsystemrelease => 'test',
