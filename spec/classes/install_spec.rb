@@ -15,29 +15,34 @@ describe 'roundcube::install' do
         .with_ensure(params[:package_ensure])
     }
   end
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
 
-  context 'with defaults' do
-    let :params do
-      default_params
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'roundcube::install shared examples'
+      end
+
+      context 'with non defaults' do
+        let :params do
+          default_params.merge(
+            packages: ['somepackage', 'roundcube'],
+            package_ensure: 'absent',
+          )
+        end
+
+        it_behaves_like 'roundcube::install shared examples'
+
+        it {
+          is_expected.to contain_package('somepackage')
+            .with_name('somepackage')
+            .with_ensure(params[:package_ensure])
+        }
+      end
     end
-
-    it_behaves_like 'roundcube::install shared examples'
-  end
-
-  context 'with non defaults' do
-    let :params do
-      default_params.merge(
-        packages: ['somepackage', 'roundcube'],
-        package_ensure: 'absent',
-      )
-    end
-
-    it_behaves_like 'roundcube::install shared examples'
-
-    it {
-      is_expected.to contain_package('somepackage')
-        .with_name('somepackage')
-        .with_ensure(params[:package_ensure])
-    }
   end
 end

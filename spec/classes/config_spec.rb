@@ -23,26 +23,32 @@ describe 'roundcube::config' do
     }
   end
 
-  context 'with defaults' do
-    let :params do
-      default_params
+  on_supported_os.each do |os, os_facts|
+    context "on #{os}" do
+      let(:facts) { os_facts }
+
+      context 'with defaults' do
+        let :params do
+          default_params
+        end
+
+        it_behaves_like 'roundcube::config shared examples'
+
+        it { is_expected.not_to contain_file_line('roudcube include local config') }
+      end
+
+      context 'with non defaults' do
+        let :params do
+          default_params.merge(
+            config_file: '/tmp/test',
+            owner: 'someone',
+            group: 'somegroup',
+            mode: '4242',
+          )
+        end
+
+        it_behaves_like 'roundcube::config shared examples'
+      end
     end
-
-    it_behaves_like 'roundcube::config shared examples'
-
-    it { is_expected.not_to contain_file_line('roudcube include local config') }
-  end
-
-  context 'with non defaults' do
-    let :params do
-      default_params.merge(
-        config_file: '/tmp/test',
-        owner: 'someone',
-        group: 'somegroup',
-        mode: '4242',
-      )
-    end
-
-    it_behaves_like 'roundcube::config shared examples'
   end
 end
