@@ -5,17 +5,16 @@ describe 'roundcube' do
   let(:pre_condition) { ['include mysql::params'] }
   let :facts do
     {
-      :operatingsystemrelease => 'test',
-      :osfamily               => 'Debian',
-      :operatingsystem        => 'Debian',
-      :lsbdistcodename        => 'Debian',
+      operatingsystemrelease: 'test',
+      osfamily: 'Debian',
+      operatingsystem: 'Debian',
+      lsbdistcodename: 'Debian',
     }
   end
 
   let :default_params do
-      { :ensure_database => false,
-        :ensure_vhost    => false,
-      }
+    { ensure_database: false,
+      ensure_vhost: false }
   end
 
   shared_examples 'roundcube shared examples' do
@@ -29,31 +28,31 @@ describe 'roundcube' do
     let :params do
       default_params
     end
+
     it_behaves_like 'roundcube shared examples'
 
-    it { is_expected.to_not contain_class('roundcube::db') }
-    it { is_expected.to_not contain_class('roundcube::vhost') }
+    it { is_expected.not_to contain_class('roundcube::db') }
+    it { is_expected.not_to contain_class('roundcube::vhost') }
   end
 
   context 'with db' do
     let :params do
-      default_params.merge( :ensure_database => true )
+      default_params.merge(ensure_database: true)
     end
+
     it_behaves_like 'roundcube shared examples'
 
     it { is_expected.to contain_class('roundcube::db') }
-    it { is_expected.to_not contain_class('roundcube::vhost') }
+    it { is_expected.not_to contain_class('roundcube::vhost') }
   end
 
-# context 'with vhost' do
-#   let :params do
-#     default_params.merge( :ensure_vhost => true )
-#   end
-#   it_behaves_like 'roundcube shared examples'
+  # context 'with vhost' do
+  #   let :params do
+  #     default_params.merge( :ensure_vhost => true )
+  #   end
+  #   it_behaves_like 'roundcube shared examples'
 
-#   it { is_expected.to_not contain_class('roundcube::db') }
-#   it { is_expected.to contain_class('roundcube::vhost') }
-# end
-
+  #   it { is_expected.to_not contain_class('roundcube::db') }
+  #   it { is_expected.to contain_class('roundcube::vhost') }
+  # end
 end
-

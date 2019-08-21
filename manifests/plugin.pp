@@ -1,4 +1,4 @@
-
+#
 define roundcube::plugin (
   $plugin_config_dir,
   $configs     = {},

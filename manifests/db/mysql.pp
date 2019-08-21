@@ -1,4 +1,4 @@
-
+#
 class roundcube::db::mysql (
   $dbname = $roundcube::db::dbname,
   $dbuser = $roundcube::db::dbuser,
