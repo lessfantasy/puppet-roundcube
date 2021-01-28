@@ -1,11 +1,12 @@
 #
-# Paramters:
-#   $ensure_database
-#     if true a database is created
-#     Defaults to false
-#   $ensure_vhost
-#     if true a virtualhost is created
-#     Defaults to false
+# @summary the main roundcube class
+#
+# @param ensure_database
+#   if true a database is created
+#   Defaults to false
+# @param ensure_vhost
+#   if true a virtualhost is created
+#   Defaults to false
 #
 class roundcube(
   Boolean $ensure_database = false,

@@ -22,7 +22,7 @@ It assumes, you are using hiera to configure.
 
 Just include the roundcube class and add some hiera definitions....
 
-Details about the configuration possibilities are documented in the classes.
+Details about the configuration possibilities are documented in the classes or look at the REFERENCE.md file.
 
 ## Contributing
 

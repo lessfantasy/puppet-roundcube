@@ -1,24 +1,29 @@
+# @summary roundcube configuration
 #
-# Paramters:
-#   $config_file:
-#     configuration file to use
-#   $configs: 
-#     Hash of configuration variables to set.
-#     Defaults to {}
-#   $owner:
-#     owner of the config file
-#     Defaults to $roundcube::params::config_owner
-#   $group
-#     group of the config file
-#     Defaults to $roundcube::params::config_group
-#   $mode
-#     mode of the config file
-#     Defaults to $roundcube::params::config_mode
-#   $append_include
-#     if set to a file a line
-#     include_once($config_file) is appended this is used
-#     if you do not want to pverwrite the system config file
-#     Defaults to '' (nothing done)
+# @param config_file
+#   configuration file to use
+# @param configs
+#   Hash of configuration variables to set.
+#   Defaults to {}
+# @param owner
+#   owner of the config file
+#   Defaults to $roundcube::params::config_owner
+# @param group
+#   group of the config file
+#   Defaults to $roundcube::params::config_group
+# @param mode
+#   mode of the config file
+#   Defaults to $roundcube::params::config_mode
+# @param include_db_config
+# @param plugins
+#   plugings with configuration to generate
+#   (uses create_resources for roundcube::plugin
+#    define, simplifies hiera usage !)
+# @param plugin_config_dir
+#   the default config directory to use for plugins
+#   only used if roundcube::config::plugins parameter
+#   is used
+#
 class roundcube::config (
   String $config_file       = $roundcube::params::config_file,
   Hash   $configs           = {},

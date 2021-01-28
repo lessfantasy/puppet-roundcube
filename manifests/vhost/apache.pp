@@ -2,6 +2,16 @@
 # internal class that installs an apache vhost
 # Parameters are inherited from roundcube::vhost
 # 
+# @param servername
+# @param serveraliases
+# @param docroot
+# @param apache_vhost
+# @param ssl
+# @param ssl_cert
+# @param ssl_key
+# @param ssl_chain
+# @param redirect_to_ssl
+#
 class roundcube::vhost::apache (
   String  $servername      = $roundcube::vhost::servername,
   Array   $serveraliases   = $roundcube::vhost::serveraliases,

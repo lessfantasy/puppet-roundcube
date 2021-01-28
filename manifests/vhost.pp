@@ -1,31 +1,31 @@
 #
+# @summary creates a vhost for roundcube
+#
 # This class chooses the type of vhost 
 # to run webserver
 #
-# Parameters:
-#
-#  $vhosttype
+# @param vhosttype
 #    type of vhost to run. currently only apache supported (default)
-#  $servername
+# @param servername
 #    Servername (defaults to $::fqdn)
-#  $serveraliases
+# @param serveraliases
 #    Array of Serveraliasess to listen to (default [])
-#  $docroot
+# @param docroot
 #    Document root
 #    defaults to $roundcube::params::docroot
-#  $ssl
+# @param ssl
 #    If true, use ssl (defaults to false)
 #    If true, you also need to set cert, key and chain.
-#  $ssl_cert
+# @param ssl_cert
 #    ssl cert to use 
-#  $ssl_key
+# @param ssl_key
 #    ssl key to use
-#  $ssl_chain
+# @param ssl_chain
 #    ssl chain to use
-#  $redirect_to_ssl
+# @param redirect_to_ssl
 #    if true, redirects all non https requests to https
 #    defaults to true.
-#  $create_resources
+# @param create_resources
 #    a Hash of Hashes to create additional resources eg. to 
 #    retrieve a certificate.
 #    Defaults to {} (do not create any additional resources)

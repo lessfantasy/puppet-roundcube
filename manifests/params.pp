@@ -1,3 +1,7 @@
+# summary params class
+#
+# this will be move to hiera one day !
+# so do not use.
 #
 class roundcube::params{
 

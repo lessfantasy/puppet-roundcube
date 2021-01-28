@@ -1,4 +1,10 @@
-# install packages
+# @summary install roundcube packages
+# 
+# @param packages
+#   the packages to install
+# @param package_ensure
+#   what to ensure for packages
+#
 class roundcube::install (
   Array  $packages            = $roundcube::params::packages,
   String $package_ensure      = 'installed',

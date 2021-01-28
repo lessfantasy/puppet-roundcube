@@ -1,24 +1,26 @@
-# Parameters:
-# $dbpass
+#
+# @summary configure database
+#
+# @param dbpass
 #   password to connect to the database.
-# $dbtype
+# @param dbtype
 #   database type to use currently only mysql is
 #   supported. 
 #   defaults to 'mysql'
-# $dbname
+# @param dbname
 #   name of the database
 #   defaults to: 'roundcube'
-# $dbuser
+# @param dbuser
 #   username to connect to the database.
 #   defaults to: 'roundcube'
-# $basepath
+# @param basepath
 #   basepath for database, defaults to ''
-# $dbport
+# @param dbport
 #   port to connect to db defaults to '3306' (mysql)
-# $host
+# @param host
 #   host that is allowed to connect
 #   defaults to 'localhost'
-# $dbconfig_inc
+# @param dbconfig_inc
 #   where to write the db config.
 #   defaults to '/etc/roundcube/debian-db.php'
 #   if you do not want to write, set it to ''
