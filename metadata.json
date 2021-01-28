@@ -1,6 +1,6 @@
 {
   "name": "cirrax-roundcube",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "author": "Cirrax GmbH",
   "summary": "A module to configure roundcube webmail",
   "license": "GPL-3.0",
