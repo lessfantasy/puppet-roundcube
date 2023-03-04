@@ -10,10 +10,10 @@
 #   database host
 #
 class roundcube::db::mysql (
-  $dbname = $roundcube::db::dbname,
-  $dbuser = $roundcube::db::dbuser,
-  $dbpass = $roundcube::db::dbpass,
-  $host   = $roundcube::db::host,
+  String $dbname = $roundcube::db::dbname,
+  String $dbuser = $roundcube::db::dbuser,
+  String $dbpass = $roundcube::db::dbpass,
+  String $host   = $roundcube::db::host,
 ) inherits roundcube::db {
   mysql::db { $dbname :
     user     => $dbuser,

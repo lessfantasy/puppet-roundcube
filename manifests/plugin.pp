@@ -14,12 +14,12 @@
 #  mode of the config file
 # 
 define roundcube::plugin (
-  $plugin_config_dir,
-  $configs     = {},
-  $plugin_name = $title,
-  $owner       = 'root',
-  $group       = 'root',
-  $mode        = '0644',
+  String $plugin_config_dir,
+  Hash   $configs     = {},
+  String $plugin_name = $title,
+  String $owner       = 'root',
+  String $group       = 'root',
+  String $mode        = '0644',
 ) {
   if $configs != {} {
     file { "${plugin_config_dir}/${plugin_name}/config.inc.php":
