@@ -11,7 +11,6 @@
 * [`roundcube::db`](#roundcube--db): configure database
 * [`roundcube::db::mysql`](#roundcube--db--mysql): crate a mysql db for roundcube
 * [`roundcube::install`](#roundcube--install): install roundcube packages
-* [`roundcube::params`](#roundcube--params): summary params class  this will be move to hiera one day ! so do not use.
 * [`roundcube::vhost`](#roundcube--vhost): creates a vhost for roundcube
 * [`roundcube::vhost::apache`](#roundcube--vhost--apache): internal class that installs an apache vhost Parameters are inherited from roundcube::vhost
 
@@ -73,7 +72,7 @@ Data type: `String`
 
 configuration file to use
 
-Default value: `$roundcube::params::config_file`
+Default value: `'/etc/roundcube/config.inc.php'`
 
 ##### <a name="-roundcube--config--configs"></a>`configs`
 
@@ -89,27 +88,24 @@ Default value: `{}`
 Data type: `String`
 
 owner of the config file
-Defaults to $roundcube::params::config_owner
 
-Default value: `$roundcube::params::config_owner`
+Default value: `'root'`
 
 ##### <a name="-roundcube--config--group"></a>`group`
 
 Data type: `String`
 
 group of the config file
-Defaults to $roundcube::params::config_group
 
-Default value: `$roundcube::params::config_group`
+Default value: `'www-data'`
 
 ##### <a name="-roundcube--config--mode"></a>`mode`
 
 Data type: `String`
 
 mode of the config file
-Defaults to $roundcube::params::config_mode
 
-Default value: `$roundcube::params::config_mode`
+Default value: `'0640'`
 
 ##### <a name="-roundcube--config--include_db_config"></a>`include_db_config`
 
@@ -117,7 +113,7 @@ Data type: `String`
 
 
 
-Default value: `$roundcube::params::include_db_config`
+Default value: `'/etc/roundcube/debian-db-roundcube.php'`
 
 ##### <a name="-roundcube--config--plugins"></a>`plugins`
 
@@ -137,7 +133,7 @@ the default config directory to use for plugins
 only used if roundcube::config::plugins parameter
 is used
 
-Default value: `$roundcube::params::plugin_config_dir`
+Default value: `'/etc/roundcube/plugins'`
 
 ### <a name="roundcube--db"></a>`roundcube::db`
 
@@ -289,7 +285,7 @@ Data type: `Array`
 
 the packages to install
 
-Default value: `$roundcube::params::packages`
+Default value: `['roundcube']`
 
 ##### <a name="-roundcube--install--package_ensure"></a>`package_ensure`
 
@@ -297,14 +293,7 @@ Data type: `String`
 
 what to ensure for packages
 
-Default value: `'installed'`
-
-### <a name="roundcube--params"></a>`roundcube::params`
-
-summary params class
-
-this will be move to hiera one day !
-so do not use.
+Default value: `'present'`
 
 ### <a name="roundcube--vhost"></a>`roundcube::vhost`
 
@@ -355,9 +344,8 @@ Default value: `[]`
 Data type: `String`
 
 Document root
-defaults to $roundcube::params::docroot
 
-Default value: `$roundcube::params::docroot`
+Default value: `'/var/lib/roundcube'`
 
 ##### <a name="-roundcube--vhost--ssl"></a>`ssl`
 
