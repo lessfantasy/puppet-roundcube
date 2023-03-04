@@ -23,9 +23,8 @@ class roundcube::vhost::apache (
   String  $ssl_chain       = $roundcube::vhost::ssl_chain,
   Boolean $redirect_to_ssl = $roundcube::vhost::redirect_to_ssl,
 ) inherits roundcube::vhost {
-
-  include ::apache
-  include ::apache::mod::php
+  include apache
+  include apache::mod::php
 
   $vhost = {
     $servername => {

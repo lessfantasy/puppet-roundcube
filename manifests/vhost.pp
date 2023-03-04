@@ -46,7 +46,7 @@
 #
 class roundcube::vhost (
   String  $vhosttype        = 'apache',
-  String  $servername       = $::fqdn,
+  String  $servername       = $facts['networking']['fqdn'],
   Array   $serveraliases    = [],
   String  $docroot          = $roundcube::params::docroot,
   Boolean $ssl              = false,
@@ -56,9 +56,8 @@ class roundcube::vhost (
   Boolean $redirect_to_ssl  = true,
   Hash    $create_resources = {},
 ) inherits roundcube::params {
-
   case $vhosttype {
-    'apache': { include ::roundcube::vhost::apache }
+    'apache': { include roundcube::vhost::apache }
     default: { fail("Webserver '${vhosttype}' is not supported") }
   }
 

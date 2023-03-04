@@ -34,15 +34,14 @@ class roundcube::config (
   Hash   $plugins           = {},
   String $plugin_config_dir = $roundcube::params::plugin_config_dir,
 ) inherits roundcube::params {
-
   file { $config_file:
     owner   => $owner,
     group   => $group,
     mode    => $mode,
-    content => epp('roundcube/config.epp',{
-      configs           => $configs,
-      include_db_config => $include_db_config,
-      plugins           => $plugins.keys,
+    content => epp('roundcube/config.epp', {
+        configs           => $configs,
+        include_db_config => $include_db_config,
+        plugins           => $plugins.keys,
     }),
   }
 

@@ -3,8 +3,7 @@
 # this will be move to hiera one day !
 # so do not use.
 #
-class roundcube::params{
-
+class roundcube::params {
   $packages     = ['roundcube']
   $config_file  = '/etc/roundcube/config.inc.php'
   $include_db_config = '/etc/roundcube/debian-db-roundcube.php'
@@ -14,5 +13,4 @@ class roundcube::params{
   $docroot      = '/var/lib/roundcube'
 
   $plugin_config_dir = '/etc/roundcube/plugins'
-
 }

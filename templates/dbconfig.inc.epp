@@ -4,7 +4,7 @@
       String $dbuser   = 'roundcube',
       String $host     = 'localhost',
       String $dbport   = '3306',
-      String $basepath = '',
+      Optional[String] $basepath,
 | -%>
 <?php
 ##
@@ -14,7 +14,9 @@
 ##
 $dbuser='<%= $dbuser %>';
 $dbpass='<%= $dbpass %>';
+<% if $basepath { -%>
 $basepath='<%= $basepath %>';
+<% } -%>
 $dbname='<%= $dbname %>';
 $dbserver='<%= $host %>';
 $dbport='<%= $dbport %>';

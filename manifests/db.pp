@@ -14,7 +14,7 @@
 #   username to connect to the database.
 #   defaults to: 'roundcube'
 # @param basepath
-#   basepath for database, defaults to ''
+#   basepath for database, defaults to undef
 # @param dbport
 #   port to connect to db defaults to '3306' (mysql)
 # @param host
@@ -26,18 +26,17 @@
 #   if you do not want to write, set it to ''
 #
 class roundcube::db (
-  String $dbpass       = 'CHANGEME',
-  String $dbtype       = 'mysql',
-  String $dbname       = 'roundcube',
-  String $dbuser       = 'roundcube',
-  String $host         = 'localhost',
-  String $basepath     = '',
-  String $dbport       = '3306',
-  String $dbconfig_inc = '/etc/roundcube/debian-db.php',
-){
-
+  String           $dbpass       = 'CHANGEME',
+  String           $dbtype       = 'mysql',
+  String           $dbname       = 'roundcube',
+  String           $dbuser       = 'roundcube',
+  String           $host         = 'localhost',
+  Optional[String] $basepath     = undef,
+  String           $dbport       = '3306',
+  String           $dbconfig_inc = '/etc/roundcube/debian-db.php',
+) {
   case $dbtype {
-    'mysql': { include ::roundcube::db::mysql }
+    'mysql': { include roundcube::db::mysql }
     default: { fail("Database '${dbtype}' is not supported") }
   }
 
@@ -47,13 +46,13 @@ class roundcube::db (
       group   => 'www-data',
       mode    => '0640',
       content => epp('roundcube/dbconfig.inc.epp', {
-        dbpass   => $dbpass,
-        dbtype   => $dbtype,
-        dbname   => $dbname,
-        dbuser   => $dbuser,
-        host     => $host,
-        basepath => $basepath,
-        dbport   => $dbport,
+          dbpass   => $dbpass,
+          dbtype   => $dbtype,
+          dbname   => $dbname,
+          dbuser   => $dbuser,
+          host     => $host,
+          basepath => $basepath,
+          dbport   => $dbport,
       }),
     }
   }
