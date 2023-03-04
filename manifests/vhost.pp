@@ -12,7 +12,6 @@
 #    Array of Serveraliasess to listen to (default [])
 # @param docroot
 #    Document root
-#    defaults to $roundcube::params::docroot
 # @param ssl
 #    If true, use ssl (defaults to false)
 #    If true, you also need to set cert, key and chain.
@@ -48,14 +47,14 @@ class roundcube::vhost (
   String  $vhosttype        = 'apache',
   String  $servername       = $facts['networking']['fqdn'],
   Array   $serveraliases    = [],
-  String  $docroot          = $roundcube::params::docroot,
+  String  $docroot          = '/var/lib/roundcube',
   Boolean $ssl              = false,
   String  $ssl_cert         = unset,
   String  $ssl_key          = unset,
   String  $ssl_chain        = unset,
   Boolean $redirect_to_ssl  = true,
   Hash    $create_resources = {},
-) inherits roundcube::params {
+) {
   case $vhosttype {
     'apache': { include roundcube::vhost::apache }
     default: { fail("Webserver '${vhosttype}' is not supported") }

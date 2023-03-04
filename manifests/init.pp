@@ -11,7 +11,7 @@
 class roundcube (
   Boolean $ensure_database = false,
   Boolean $ensure_vhost    = false,
-) inherits roundcube::params {
+) {
   Package<|tag == 'roundcube-packages'|> -> Class['roundcube::config']
   Class['roundcube::install'] -> Class['roundcube::config']
 

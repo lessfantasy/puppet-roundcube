@@ -7,13 +7,10 @@
 #   Defaults to {}
 # @param owner
 #   owner of the config file
-#   Defaults to $roundcube::params::config_owner
 # @param group
 #   group of the config file
-#   Defaults to $roundcube::params::config_group
 # @param mode
 #   mode of the config file
-#   Defaults to $roundcube::params::config_mode
 # @param include_db_config
 # @param plugins
 #   plugings with configuration to generate
@@ -25,15 +22,15 @@
 #   is used
 #
 class roundcube::config (
-  String $config_file       = $roundcube::params::config_file,
+  String $config_file       = '/etc/roundcube/config.inc.php',
   Hash   $configs           = {},
-  String $owner             = $roundcube::params::config_owner,
-  String $group             = $roundcube::params::config_group,
-  String $mode              = $roundcube::params::config_mode,
-  String $include_db_config = $roundcube::params::include_db_config,
+  String $owner             = 'root',
+  String $group             = 'www-data',
+  String $mode              = '0640',
+  String $include_db_config = '/etc/roundcube/debian-db-roundcube.php',
   Hash   $plugins           = {},
-  String $plugin_config_dir = $roundcube::params::plugin_config_dir,
-) inherits roundcube::params {
+  String $plugin_config_dir = '/etc/roundcube/plugins',
+) {
   file { $config_file:
     owner   => $owner,
     group   => $group,
