@@ -7,55 +7,67 @@
 ### Classes
 
 * [`roundcube`](#roundcube): the main roundcube class
-* [`roundcube::config`](#roundcubeconfig): roundcube configuration
-* [`roundcube::db`](#roundcubedb): configure database
-* [`roundcube::db::mysql`](#roundcubedbmysql): crate a mysql db for roundcube
-* [`roundcube::install`](#roundcubeinstall): install roundcube packages
-* [`roundcube::params`](#roundcubeparams): summary params class  this will be move to hiera one day ! so do not use.
-* [`roundcube::vhost`](#roundcubevhost): creates a vhost for roundcube
-* [`roundcube::vhost::apache`](#roundcubevhostapache): internal class that installs an apache vhost Parameters are inherited from roundcube::vhost
+* [`roundcube::config`](#roundcube--config): roundcube configuration
+* [`roundcube::db`](#roundcube--db): configure database
+* [`roundcube::db::mysql`](#roundcube--db--mysql): crate a mysql db for roundcube
+* [`roundcube::install`](#roundcube--install): install roundcube packages
+* [`roundcube::params`](#roundcube--params): summary params class  this will be move to hiera one day ! so do not use.
+* [`roundcube::vhost`](#roundcube--vhost): creates a vhost for roundcube
+* [`roundcube::vhost::apache`](#roundcube--vhost--apache): internal class that installs an apache vhost Parameters are inherited from roundcube::vhost
 
 ### Defined types
 
-* [`roundcube::plugin`](#roundcubeplugin): configures plugins
+* [`roundcube::plugin`](#roundcube--plugin): configures plugins
 
 ## Classes
 
-### `roundcube`
+### <a name="roundcube"></a>`roundcube`
 
 the main roundcube class
 
 #### Parameters
 
-The following parameters are available in the `roundcube` class.
+The following parameters are available in the `roundcube` class:
 
-##### `ensure_database`
+* [`ensure_database`](#-roundcube--ensure_database)
+* [`ensure_vhost`](#-roundcube--ensure_vhost)
+
+##### <a name="-roundcube--ensure_database"></a>`ensure_database`
 
 Data type: `Boolean`
 
 if true a database is created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-##### `ensure_vhost`
+##### <a name="-roundcube--ensure_vhost"></a>`ensure_vhost`
 
 Data type: `Boolean`
 
 if true a virtualhost is created
 Defaults to false
 
-Default value: ``false``
+Default value: `false`
 
-### `roundcube::config`
+### <a name="roundcube--config"></a>`roundcube::config`
 
 roundcube configuration
 
 #### Parameters
 
-The following parameters are available in the `roundcube::config` class.
+The following parameters are available in the `roundcube::config` class:
 
-##### `config_file`
+* [`config_file`](#-roundcube--config--config_file)
+* [`configs`](#-roundcube--config--configs)
+* [`owner`](#-roundcube--config--owner)
+* [`group`](#-roundcube--config--group)
+* [`mode`](#-roundcube--config--mode)
+* [`include_db_config`](#-roundcube--config--include_db_config)
+* [`plugins`](#-roundcube--config--plugins)
+* [`plugin_config_dir`](#-roundcube--config--plugin_config_dir)
+
+##### <a name="-roundcube--config--config_file"></a>`config_file`
 
 Data type: `String`
 
@@ -63,7 +75,7 @@ configuration file to use
 
 Default value: `$roundcube::params::config_file`
 
-##### `configs`
+##### <a name="-roundcube--config--configs"></a>`configs`
 
 Data type: `Hash`
 
@@ -72,7 +84,7 @@ Defaults to {}
 
 Default value: `{}`
 
-##### `owner`
+##### <a name="-roundcube--config--owner"></a>`owner`
 
 Data type: `String`
 
@@ -81,7 +93,7 @@ Defaults to $roundcube::params::config_owner
 
 Default value: `$roundcube::params::config_owner`
 
-##### `group`
+##### <a name="-roundcube--config--group"></a>`group`
 
 Data type: `String`
 
@@ -90,7 +102,7 @@ Defaults to $roundcube::params::config_group
 
 Default value: `$roundcube::params::config_group`
 
-##### `mode`
+##### <a name="-roundcube--config--mode"></a>`mode`
 
 Data type: `String`
 
@@ -99,7 +111,7 @@ Defaults to $roundcube::params::config_mode
 
 Default value: `$roundcube::params::config_mode`
 
-##### `include_db_config`
+##### <a name="-roundcube--config--include_db_config"></a>`include_db_config`
 
 Data type: `String`
 
@@ -107,7 +119,7 @@ Data type: `String`
 
 Default value: `$roundcube::params::include_db_config`
 
-##### `plugins`
+##### <a name="-roundcube--config--plugins"></a>`plugins`
 
 Data type: `Hash`
 
@@ -117,7 +129,7 @@ plugings with configuration to generate
 
 Default value: `{}`
 
-##### `plugin_config_dir`
+##### <a name="-roundcube--config--plugin_config_dir"></a>`plugin_config_dir`
 
 Data type: `String`
 
@@ -127,15 +139,24 @@ is used
 
 Default value: `$roundcube::params::plugin_config_dir`
 
-### `roundcube::db`
+### <a name="roundcube--db"></a>`roundcube::db`
 
 configure database
 
 #### Parameters
 
-The following parameters are available in the `roundcube::db` class.
+The following parameters are available in the `roundcube::db` class:
 
-##### `dbpass`
+* [`dbpass`](#-roundcube--db--dbpass)
+* [`dbtype`](#-roundcube--db--dbtype)
+* [`dbname`](#-roundcube--db--dbname)
+* [`dbuser`](#-roundcube--db--dbuser)
+* [`basepath`](#-roundcube--db--basepath)
+* [`dbport`](#-roundcube--db--dbport)
+* [`host`](#-roundcube--db--host)
+* [`dbconfig_inc`](#-roundcube--db--dbconfig_inc)
+
+##### <a name="-roundcube--db--dbpass"></a>`dbpass`
 
 Data type: `String`
 
@@ -143,7 +164,7 @@ password to connect to the database.
 
 Default value: `'CHANGEME'`
 
-##### `dbtype`
+##### <a name="-roundcube--db--dbtype"></a>`dbtype`
 
 Data type: `String`
 
@@ -153,7 +174,7 @@ defaults to 'mysql'
 
 Default value: `'mysql'`
 
-##### `dbname`
+##### <a name="-roundcube--db--dbname"></a>`dbname`
 
 Data type: `String`
 
@@ -162,7 +183,7 @@ defaults to: 'roundcube'
 
 Default value: `'roundcube'`
 
-##### `dbuser`
+##### <a name="-roundcube--db--dbuser"></a>`dbuser`
 
 Data type: `String`
 
@@ -171,15 +192,15 @@ defaults to: 'roundcube'
 
 Default value: `'roundcube'`
 
-##### `basepath`
+##### <a name="-roundcube--db--basepath"></a>`basepath`
 
-Data type: `String`
+Data type: `Optional[String]`
 
-basepath for database, defaults to ''
+basepath for database, defaults to undef
 
-Default value: `''`
+Default value: `undef`
 
-##### `dbport`
+##### <a name="-roundcube--db--dbport"></a>`dbport`
 
 Data type: `String`
 
@@ -187,7 +208,7 @@ port to connect to db defaults to '3306' (mysql)
 
 Default value: `'3306'`
 
-##### `host`
+##### <a name="-roundcube--db--host"></a>`host`
 
 Data type: `String`
 
@@ -196,7 +217,7 @@ defaults to 'localhost'
 
 Default value: `'localhost'`
 
-##### `dbconfig_inc`
+##### <a name="-roundcube--db--dbconfig_inc"></a>`dbconfig_inc`
 
 Data type: `String`
 
@@ -206,55 +227,63 @@ if you do not want to write, set it to ''
 
 Default value: `'/etc/roundcube/debian-db.php'`
 
-### `roundcube::db::mysql`
+### <a name="roundcube--db--mysql"></a>`roundcube::db::mysql`
 
 crate a mysql db for roundcube
 
 #### Parameters
 
-The following parameters are available in the `roundcube::db::mysql` class.
+The following parameters are available in the `roundcube::db::mysql` class:
 
-##### `dbname`
+* [`dbname`](#-roundcube--db--mysql--dbname)
+* [`dbuser`](#-roundcube--db--mysql--dbuser)
+* [`dbpass`](#-roundcube--db--mysql--dbpass)
+* [`host`](#-roundcube--db--mysql--host)
 
-Data type: `Any`
+##### <a name="-roundcube--db--mysql--dbname"></a>`dbname`
+
+Data type: `String`
 
 the name of the database
 
 Default value: `$roundcube::db::dbname`
 
-##### `dbuser`
+##### <a name="-roundcube--db--mysql--dbuser"></a>`dbuser`
 
-Data type: `Any`
+Data type: `String`
 
 db user
 
 Default value: `$roundcube::db::dbuser`
 
-##### `dbpass`
+##### <a name="-roundcube--db--mysql--dbpass"></a>`dbpass`
 
-Data type: `Any`
+Data type: `String`
 
 password for the user
 
 Default value: `$roundcube::db::dbpass`
 
-##### `host`
+##### <a name="-roundcube--db--mysql--host"></a>`host`
 
-Data type: `Any`
+Data type: `String`
 
 database host
 
 Default value: `$roundcube::db::host`
 
-### `roundcube::install`
+### <a name="roundcube--install"></a>`roundcube::install`
 
 install roundcube packages
 
 #### Parameters
 
-The following parameters are available in the `roundcube::install` class.
+The following parameters are available in the `roundcube::install` class:
 
-##### `packages`
+* [`packages`](#-roundcube--install--packages)
+* [`package_ensure`](#-roundcube--install--package_ensure)
+
+##### <a name="-roundcube--install--packages"></a>`packages`
 
 Data type: `Array`
 
@@ -262,7 +291,7 @@ the packages to install
 
 Default value: `$roundcube::params::packages`
 
-##### `package_ensure`
+##### <a name="-roundcube--install--package_ensure"></a>`package_ensure`
 
 Data type: `String`
 
@@ -270,23 +299,34 @@ what to ensure for packages
 
 Default value: `'installed'`
 
-### `roundcube::params`
+### <a name="roundcube--params"></a>`roundcube::params`
 
 summary params class
 
 this will be move to hiera one day !
 so do not use.
 
-### `roundcube::vhost`
+### <a name="roundcube--vhost"></a>`roundcube::vhost`
 
 This class chooses the type of vhost
 to run webserver
 
 #### Parameters
 
-The following parameters are available in the `roundcube::vhost` class.
+The following parameters are available in the `roundcube::vhost` class:
 
-##### `vhosttype`
+* [`vhosttype`](#-roundcube--vhost--vhosttype)
+* [`servername`](#-roundcube--vhost--servername)
+* [`serveraliases`](#-roundcube--vhost--serveraliases)
+* [`docroot`](#-roundcube--vhost--docroot)
+* [`ssl`](#-roundcube--vhost--ssl)
+* [`ssl_cert`](#-roundcube--vhost--ssl_cert)
+* [`ssl_key`](#-roundcube--vhost--ssl_key)
+* [`ssl_chain`](#-roundcube--vhost--ssl_chain)
+* [`redirect_to_ssl`](#-roundcube--vhost--redirect_to_ssl)
+* [`create_resources`](#-roundcube--vhost--create_resources)
+
+##### <a name="-roundcube--vhost--vhosttype"></a>`vhosttype`
 
 Data type: `String`
 
@@ -294,15 +334,15 @@ type of vhost to run. currently only apache supported (default)
 
 Default value: `'apache'`
 
-##### `servername`
+##### <a name="-roundcube--vhost--servername"></a>`servername`
 
 Data type: `String`
 
 Servername (defaults to $::fqdn)
 
-Default value: `$::fqdn`
+Default value: `$facts['networking']['fqdn']`
 
-##### `serveraliases`
+##### <a name="-roundcube--vhost--serveraliases"></a>`serveraliases`
 
 Data type: `Array`
 
@@ -310,7 +350,7 @@ Array of Serveraliasess to listen to (default [])
 
 Default value: `[]`
 
-##### `docroot`
+##### <a name="-roundcube--vhost--docroot"></a>`docroot`
 
 Data type: `String`
 
@@ -319,16 +359,16 @@ defaults to $roundcube::params::docroot
 
 Default value: `$roundcube::params::docroot`
 
-##### `ssl`
+##### <a name="-roundcube--vhost--ssl"></a>`ssl`
 
 Data type: `Boolean`
 
 If true, use ssl (defaults to false)
 If true, you also need to set cert, key and chain.
 
-Default value: ``false``
+Default value: `false`
 
-##### `ssl_cert`
+##### <a name="-roundcube--vhost--ssl_cert"></a>`ssl_cert`
 
 Data type: `String`
 
@@ -336,7 +376,7 @@ ssl cert to use
 
 Default value: `unset`
 
-##### `ssl_key`
+##### <a name="-roundcube--vhost--ssl_key"></a>`ssl_key`
 
 Data type: `String`
 
@@ -344,7 +384,7 @@ ssl key to use
 
 Default value: `unset`
 
-##### `ssl_chain`
+##### <a name="-roundcube--vhost--ssl_chain"></a>`ssl_chain`
 
 Data type: `String`
 
@@ -352,16 +392,16 @@ ssl chain to use
 
 Default value: `unset`
 
-##### `redirect_to_ssl`
+##### <a name="-roundcube--vhost--redirect_to_ssl"></a>`redirect_to_ssl`
 
 Data type: `Boolean`
 
 if true, redirects all non https requests to https
 defaults to true.
 
-Default value: ``true``
+Default value: `true`
 
-##### `create_resources`
+##### <a name="-roundcube--vhost--create_resources"></a>`create_resources`
 
 Data type: `Hash`
 
@@ -385,16 +425,26 @@ sslcert::get_cert{'get_my_roundcube_cert':
 
 Default value: `{}`
 
-### `roundcube::vhost::apache`
+### <a name="roundcube--vhost--apache"></a>`roundcube::vhost::apache`
 
 internal class that installs an apache vhost
 Parameters are inherited from roundcube::vhost
 
 #### Parameters
 
-The following parameters are available in the `roundcube::vhost::apache` class.
+The following parameters are available in the `roundcube::vhost::apache` class:
 
-##### `servername`
+* [`servername`](#-roundcube--vhost--apache--servername)
+* [`serveraliases`](#-roundcube--vhost--apache--serveraliases)
+* [`docroot`](#-roundcube--vhost--apache--docroot)
+* [`apache_vhost`](#-roundcube--vhost--apache--apache_vhost)
+* [`ssl`](#-roundcube--vhost--apache--ssl)
+* [`ssl_cert`](#-roundcube--vhost--apache--ssl_cert)
+* [`ssl_key`](#-roundcube--vhost--apache--ssl_key)
+* [`ssl_chain`](#-roundcube--vhost--apache--ssl_chain)
+* [`redirect_to_ssl`](#-roundcube--vhost--apache--redirect_to_ssl)
+
+##### <a name="-roundcube--vhost--apache--servername"></a>`servername`
 
 Data type: `String`
 
@@ -402,7 +452,7 @@ Data type: `String`
 
 Default value: `$roundcube::vhost::servername`
 
-##### `serveraliases`
+##### <a name="-roundcube--vhost--apache--serveraliases"></a>`serveraliases`
 
 Data type: `Array`
 
@@ -410,7 +460,7 @@ Data type: `Array`
 
 Default value: `$roundcube::vhost::serveraliases`
 
-##### `docroot`
+##### <a name="-roundcube--vhost--apache--docroot"></a>`docroot`
 
 Data type: `String`
 
@@ -418,7 +468,7 @@ Data type: `String`
 
 Default value: `$roundcube::vhost::docroot`
 
-##### `apache_vhost`
+##### <a name="-roundcube--vhost--apache--apache_vhost"></a>`apache_vhost`
 
 Data type: `Hash`
 
@@ -426,7 +476,7 @@ Data type: `Hash`
 
 Default value: `{}`
 
-##### `ssl`
+##### <a name="-roundcube--vhost--apache--ssl"></a>`ssl`
 
 Data type: `Boolean`
 
@@ -434,7 +484,7 @@ Data type: `Boolean`
 
 Default value: `$roundcube::vhost::ssl`
 
-##### `ssl_cert`
+##### <a name="-roundcube--vhost--apache--ssl_cert"></a>`ssl_cert`
 
 Data type: `String`
 
@@ -442,7 +492,7 @@ Data type: `String`
 
 Default value: `$roundcube::vhost::ssl_cert`
 
-##### `ssl_key`
+##### <a name="-roundcube--vhost--apache--ssl_key"></a>`ssl_key`
 
 Data type: `String`
 
@@ -450,7 +500,7 @@ Data type: `String`
 
 Default value: `$roundcube::vhost::ssl_key`
 
-##### `ssl_chain`
+##### <a name="-roundcube--vhost--apache--ssl_chain"></a>`ssl_chain`
 
 Data type: `String`
 
@@ -458,7 +508,7 @@ Data type: `String`
 
 Default value: `$roundcube::vhost::ssl_chain`
 
-##### `redirect_to_ssl`
+##### <a name="-roundcube--vhost--apache--redirect_to_ssl"></a>`redirect_to_ssl`
 
 Data type: `Boolean`
 
@@ -468,55 +518,62 @@ Default value: `$roundcube::vhost::redirect_to_ssl`
 
 ## Defined types
 
-### `roundcube::plugin`
+### <a name="roundcube--plugin"></a>`roundcube::plugin`
 
 configures plugins
 
 #### Parameters
 
-The following parameters are available in the `roundcube::plugin` defined type.
+The following parameters are available in the `roundcube::plugin` defined type:
 
-##### `plugin_config_dir`
+* [`plugin_config_dir`](#-roundcube--plugin--plugin_config_dir)
+* [`configs`](#-roundcube--plugin--configs)
+* [`plugin_name`](#-roundcube--plugin--plugin_name)
+* [`owner`](#-roundcube--plugin--owner)
+* [`group`](#-roundcube--plugin--group)
+* [`mode`](#-roundcube--plugin--mode)
 
-Data type: `Any`
+##### <a name="-roundcube--plugin--plugin_config_dir"></a>`plugin_config_dir`
+
+Data type: `String`
 
 directory
 
-##### `configs`
+##### <a name="-roundcube--plugin--configs"></a>`configs`
 
-Data type: `Any`
+Data type: `Hash`
 
 the configurations
 
 Default value: `{}`
 
-##### `plugin_name`
+##### <a name="-roundcube--plugin--plugin_name"></a>`plugin_name`
 
-Data type: `Any`
+Data type: `String`
 
 name of the plugin
 
 Default value: `$title`
 
-##### `owner`
+##### <a name="-roundcube--plugin--owner"></a>`owner`
 
-Data type: `Any`
+Data type: `String`
 
 owner of the config file
 
 Default value: `'root'`
 
-##### `group`
+##### <a name="-roundcube--plugin--group"></a>`group`
 
-Data type: `Any`
+Data type: `String`
 
 group of the config file
 
 Default value: `'root'`
 
-##### `mode`
+##### <a name="-roundcube--plugin--mode"></a>`mode`
 
-Data type: `Any`
+Data type: `String`
 
 mode of the config file
 
