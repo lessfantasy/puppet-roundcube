@@ -3,7 +3,7 @@ require 'spec_helper'
 describe 'roundcube::install' do
   let :default_params do
     {  packages: ['roundcube'],
-       package_ensure: 'present' }
+       package_ensure: 'installed' }
   end
 
   shared_examples 'roundcube::install shared examples' do

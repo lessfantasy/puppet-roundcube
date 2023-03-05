@@ -44,16 +44,16 @@
 #    }
 #
 class roundcube::vhost (
-  String  $vhosttype        = 'apache',
-  String  $servername       = $facts['networking']['fqdn'],
-  Array   $serveraliases    = [],
-  String  $docroot          = '/var/lib/roundcube',
-  Boolean $ssl              = false,
-  String  $ssl_cert         = unset,
-  String  $ssl_key          = unset,
-  String  $ssl_chain        = unset,
-  Boolean $redirect_to_ssl  = true,
-  Hash    $create_resources = {},
+  String                $vhosttype        = 'apache',
+  String                $servername       = $facts['networking']['fqdn'],
+  Array                 $serveraliases    = [],
+  Stdlib::Absolutepath  $docroot          = '/var/lib/roundcube',
+  Boolean               $ssl              = false,
+  Stdlib::Absolutepath  $ssl_cert         = unset,
+  Stdlib::Absolutepath  $ssl_key          = unset,
+  Stdlib::Absolutepath  $ssl_chain        = unset,
+  Boolean               $redirect_to_ssl  = true,
+  Hash                  $create_resources = {},
 ) {
   case $vhosttype {
     'apache': { include roundcube::vhost::apache }

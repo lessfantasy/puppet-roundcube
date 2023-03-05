@@ -1,13 +1,9 @@
 ---
 fixtures:
-  repositories:
-          "apache":
-                  repo: "https://github.com/puppetlabs/puppetlabs-apache.git"
-          "mysql":
-                  repo: "https://github.com/puppetlabs/puppetlabs-mysql.git"
-          "stdlib":
-                  repo: "https://github.com/puppetlabs/puppetlabs-stdlib.git"
-          "concat":
-                  repo:  "https://github.com/puppetlabs/puppetlabs-concat.git"
+  forge_modules:
+    apache: puppetlabs/apache
+    mysql: puppetlabs/mysql
+    stdlib: puppetlabs/stdlib
+    concat: puppetlabs/concat
   symlinks:
-          "roundcube": "#{source_dir}"
+    roundcube: "#{source_dir}"

@@ -13,15 +13,15 @@
 # @param redirect_to_ssl
 #
 class roundcube::vhost::apache (
-  String  $servername      = $roundcube::vhost::servername,
-  Array   $serveraliases   = $roundcube::vhost::serveraliases,
-  String  $docroot         = $roundcube::vhost::docroot,
-  Hash    $apache_vhost    = {},
-  Boolean $ssl             = $roundcube::vhost::ssl,
-  String  $ssl_cert        = $roundcube::vhost::ssl_cert,
-  String  $ssl_key         = $roundcube::vhost::ssl_key,
-  String  $ssl_chain       = $roundcube::vhost::ssl_chain,
-  Boolean $redirect_to_ssl = $roundcube::vhost::redirect_to_ssl,
+  String                $servername      = $roundcube::vhost::servername,
+  Array                 $serveraliases   = $roundcube::vhost::serveraliases,
+  Stdlib::Absolutepath  $docroot         = $roundcube::vhost::docroot,
+  Hash                  $apache_vhost    = {},
+  Boolean               $ssl             = $roundcube::vhost::ssl,
+  Stdlib::Absolutepath  $ssl_cert        = $roundcube::vhost::ssl_cert,
+  Stdlib::Absolutepath  $ssl_key         = $roundcube::vhost::ssl_key,
+  Stdlib::Absolutepath  $ssl_chain       = $roundcube::vhost::ssl_chain,
+  Boolean               $redirect_to_ssl = $roundcube::vhost::redirect_to_ssl,
 ) inherits roundcube::vhost {
   include apache
   include apache::mod::php
@@ -34,7 +34,7 @@ class roundcube::vhost::apache (
       'ssl_cert'      => $ssl_cert,
       'ssl_key'       => $ssl_key,
       'ssl_chain'     => $ssl_chain,
-      'port'          => '443',
+      'port'          => 443,
     },
   }
 
