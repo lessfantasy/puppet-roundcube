@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe 'roundcube::config' do
   let :default_params do
-    { config_file: '/etc/roundcube/config.local.php',
+    { config_file: '/etc/roundcube/config.inc.php',
       configs: {},
       owner: 'root',
       group: 'www-data',

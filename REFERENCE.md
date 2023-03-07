@@ -293,7 +293,7 @@ Data type: `String`
 
 what to ensure for packages
 
-Default value: `'present'`
+Default value: `'installed'`
 
 ### <a name="roundcube--vhost"></a>`roundcube::vhost`
 
@@ -341,7 +341,7 @@ Default value: `[]`
 
 ##### <a name="-roundcube--vhost--docroot"></a>`docroot`
 
-Data type: `String`
+Data type: `Stdlib::Absolutepath`
 
 Document root
 
@@ -358,27 +358,27 @@ Default value: `false`
 
 ##### <a name="-roundcube--vhost--ssl_cert"></a>`ssl_cert`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl cert to use
 
-Default value: `unset`
+Default value: `undef`
 
 ##### <a name="-roundcube--vhost--ssl_key"></a>`ssl_key`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl key to use
 
-Default value: `unset`
+Default value: `undef`
 
 ##### <a name="-roundcube--vhost--ssl_chain"></a>`ssl_chain`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 ssl chain to use
 
-Default value: `unset`
+Default value: `undef`
 
 ##### <a name="-roundcube--vhost--redirect_to_ssl"></a>`redirect_to_ssl`
 
@@ -450,7 +450,7 @@ Default value: `$roundcube::vhost::serveraliases`
 
 ##### <a name="-roundcube--vhost--apache--docroot"></a>`docroot`
 
-Data type: `String`
+Data type: `Stdlib::Absolutepath`
 
 
 
@@ -474,7 +474,7 @@ Default value: `$roundcube::vhost::ssl`
 
 ##### <a name="-roundcube--vhost--apache--ssl_cert"></a>`ssl_cert`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
@@ -482,7 +482,7 @@ Default value: `$roundcube::vhost::ssl_cert`
 
 ##### <a name="-roundcube--vhost--apache--ssl_key"></a>`ssl_key`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 
@@ -490,7 +490,7 @@ Default value: `$roundcube::vhost::ssl_key`
 
 ##### <a name="-roundcube--vhost--apache--ssl_chain"></a>`ssl_chain`
 
-Data type: `String`
+Data type: `Optional[Stdlib::Absolutepath]`
 
 
 

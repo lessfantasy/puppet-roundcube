@@ -7,7 +7,7 @@
 #
 class roundcube::install (
   Array  $packages       = ['roundcube'],
-  String $package_ensure = 'present',
+  String $package_ensure = 'installed',
 ) {
   ensure_packages($packages, {
       ensure => $package_ensure,
