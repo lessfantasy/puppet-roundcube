@@ -235,6 +235,8 @@ The following parameters are available in the `roundcube::db::mysql` class:
 * [`dbuser`](#-roundcube--db--mysql--dbuser)
 * [`dbpass`](#-roundcube--db--mysql--dbpass)
 * [`host`](#-roundcube--db--mysql--host)
+* [`collate`](#-roundcube--db--mysql--collate)
+* [`charset`](#-roundcube--db--mysql--charset)
 
 ##### <a name="-roundcube--db--mysql--dbname"></a>`dbname`
 
@@ -267,6 +269,22 @@ Data type: `String`
 database host
 
 Default value: `$roundcube::db::host`
+
+##### <a name="-roundcube--db--mysql--collate"></a>`collate`
+
+Data type: `Optional[String[1]]`
+
+set collate
+
+Default value: `undef`
+
+##### <a name="-roundcube--db--mysql--charset"></a>`charset`
+
+Data type: `Optional[String[1]]`
+
+set charset
+
+Default value: `undef`
 
 ### <a name="roundcube--install"></a>`roundcube::install`
 
